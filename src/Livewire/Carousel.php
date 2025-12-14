@@ -7,50 +7,34 @@ use Livewire\Component;
 class Carousel extends Component
 {
     public array $slides = [];
-    public string $type = 'loop';
-    public int $perPage = 1;
-    public int $perMove = 1;
-    public string $gap = '1rem';
+    public int $current = 0;
     public bool $autoplay = false;
     public int $interval = 5000;
-    public bool $pauseOnHover = true;
-    public bool $pagination = true;
-    public bool $arrows = true;
-    public bool $drag = true;
-    public bool $rewind = true;
-    public ?int $height = null;
-    public ?string $width = null;
+    public bool $showArrows = true;
+    public bool $showDots = true;
 
-    public function mount(
-        array $slides = [],
-        ?string $type = null,
-        ?int $perPage = null,
-        ?int $perMove = null,
-        ?string $gap = null,
-        ?bool $autoplay = null,
-        ?int $interval = null,
-        ?bool $pauseOnHover = null,
-        ?bool $pagination = null,
-        ?bool $arrows = null,
-        ?bool $drag = null,
-        ?bool $rewind = null,
-        ?int $height = null,
-        ?string $width = null
-    ): void {
+    public function mount(array $slides = [], bool $autoplay = false, int $interval = 5000, bool $showArrows = true, bool $showDots = true): void
+    {
         $this->slides = $slides;
-        $this->type = $type ?? config('ld-carousel.type', 'loop');
-        $this->perPage = $perPage ?? config('ld-carousel.perPage', 1);
-        $this->perMove = $perMove ?? config('ld-carousel.perMove', 1);
-        $this->gap = $gap ?? config('ld-carousel.gap', '1rem');
-        $this->autoplay = $autoplay ?? config('ld-carousel.autoplay', false);
-        $this->interval = $interval ?? config('ld-carousel.interval', 5000);
-        $this->pauseOnHover = $pauseOnHover ?? config('ld-carousel.pauseOnHover', true);
-        $this->pagination = $pagination ?? config('ld-carousel.pagination', true);
-        $this->arrows = $arrows ?? config('ld-carousel.arrows', true);
-        $this->drag = $drag ?? config('ld-carousel.drag', true);
-        $this->rewind = $rewind ?? config('ld-carousel.rewind', true);
-        $this->height = $height;
-        $this->width = $width;
+        $this->autoplay = $autoplay;
+        $this->interval = $interval;
+        $this->showArrows = $showArrows;
+        $this->showDots = $showDots;
+    }
+
+    public function previous(): void
+    {
+        $this->current = $this->current === 0 ? count($this->slides) - 1 : $this->current - 1;
+    }
+
+    public function next(): void
+    {
+        $this->current = $this->current === count($this->slides) - 1 ? 0 : $this->current + 1;
+    }
+
+    public function goTo(int $index): void
+    {
+        $this->current = $index;
     }
 
     public function render()

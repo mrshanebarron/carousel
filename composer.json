@@ -1,0 +1,30 @@
+{
+    "name": "mrshanebarron/carousel",
+    "description": "Carousel and slider component using Splide for Laravel with Livewire, Blade, and Vue support",
+    "keywords": ["laravel", "carousel", "slider", "splide", "gallery", "livewire", "blade", "vue"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Shane Barron",
+            "email": "mrshanebarron@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0|^11.0|^12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelDesign\\Carousel\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelDesign\\Carousel\\CarouselServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

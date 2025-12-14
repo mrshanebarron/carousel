@@ -28,7 +28,7 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 export default {
-  name: 'LdCarousel',
+  name: 'SbCarousel',
   props: {
     slides: { type: Array, required: true },
     autoplay: { type: Boolean, default: false },

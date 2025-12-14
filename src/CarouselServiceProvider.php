@@ -9,8 +9,8 @@ class CarouselServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (class_exists(\Livewire\Livewire::class)) {
-            \Livewire\Livewire::component('ld-carousel', Livewire\Carousel::class);
+            \Livewire\Livewire::component('sb-carousel', Livewire\Carousel::class);
         }
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'ld-carousel');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'sb-carousel');
     }
 }

@@ -39,6 +39,6 @@ class Carousel extends Component
 
     public function render()
     {
-        return view('ld-carousel::livewire.carousel');
+        return view('sb-carousel::livewire.carousel');
     }
 }
